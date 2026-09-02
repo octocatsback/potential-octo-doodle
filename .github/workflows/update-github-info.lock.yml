@@ -1,0 +1,39 @@
+# Generated companion for .github/workflows/update-github-info.md
+# Re-run `gh aw compile .github/workflows/update-github-info.md` after installing
+# the GitHub agentic workflows CLI to replace this file with the hardened
+# Copilot engine workflow.
+name: update-github-info
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 9 * * *"
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  update-github-info:
+    name: update-github-info
+    runs-on: ubuntu-latest
+    env:
+      COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Require compiled agentic workflow
+        env:
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+        run: |
+          if [ -z "${COPILOT_GITHUB_TOKEN}" ]; then
+            echo "COPILOT_GITHUB_TOKEN is not configured as an Actions secret."
+            exit 1
+          fi
+          echo "This lock file is a compile placeholder."
+          echo "Install gh-aw, then run:"
+          echo "  gh aw compile .github/workflows/update-github-info.md"
+          echo "Commit the generated lock file before running Mona's updater."
+          exit 1

@@ -1,4 +1,6 @@
 {
   "task.allowAutomaticTasks": "on",
-  "terminal.integrated.defaultLocation": "editor"
+  "terminal.integrated.defaultLocation": "editor",
+  "github.copilot.chat.agent.enabled": true,
+  "chat.mcp.access": "all"
 }
